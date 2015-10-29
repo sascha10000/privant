@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8"/>
+        
         <title>PrivAnt</title>
-        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <!-- external ressources -->
+        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        
+        <!-- webcomponents -->
+        <link rel="import" href="bower_components/core-icons/core-icons.html">
+        <link rel="import" href="bower_components/core-icons/social-icons.html">
+                
+        <!-- custom ressources -->
         <link rel="stylesheet" href="css/style.css" />
+        
     </head>
     <body>
-        <div id="top-menu">
-            <!-- Menue maybe customized for some pages -->
-            <a href="index.html"><img src="img/AntColor3.jpg" id="logo" /></a>
-        </div>
-        <div id="content"><!-- Here you can add your content --></div>
-        <div id="footer"><!-- Footer --></div>
+        <core-icon icon="social:cake"></core-icon>
     </body>
 </html>

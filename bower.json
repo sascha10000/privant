@@ -1,0 +1,24 @@
+{
+  "name": "privant",
+  "homepage": "https://github.com/sascha10000/privant",
+  "authors": [
+    "ame <sascsascha@duepre-sa.de>"
+  ],
+  "description": "A plattform for managing private events",
+  "main": "index.html",
+  "moduleType": [
+    "amd",
+    "es6",
+    "node"
+  ],
+  "keywords": [
+    "web",
+    "polymer"
+  ],
+  "license": "NONE",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0",
+    "core-icons": "Polymer/core-icons#~0.5.6"
+  }
+}
