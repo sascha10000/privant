@@ -1,0 +1,26 @@
+/* Global definitions for HTML-Template */
+html, body {
+    height: 100%;
+}
+
+#top-menu {
+    height: 10%;
+    background-color: #3c3c3c;
+}
+
+#content {
+}
+
+#footer {
+}
+
+#logo {
+    height: 100%;
+    border-radius: 200px;
+}
+
+/* Custom definitions for each page */
+
+.bold {
+    font-style: oblique;
+}
