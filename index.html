@@ -5,17 +5,23 @@
         
         <title>PrivAnt</title>
         <!-- external ressources -->
-        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.js"></script>
+        <script type="text/javascript" src="bower_components/page/page.js"></script>
         
         <!-- webcomponents -->
-        <link rel="import" href="bower_components/core-icons/core-icons.html">
-        <link rel="import" href="bower_components/core-icons/social-icons.html">
+        <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html" />
+        <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html" />
+        <link rel="import" href="bower_components/paper-button/paper-button.html" />
+        <link rel="import" href="bower_components/iron-pages/iron-pages.html" />
+        
+        <link rel="import" href="js/custom_components/cust-include.html" />
                 
         <!-- custom ressources -->
         <link rel="stylesheet" href="css/style.css" />
-        
+                
     </head>
-    <body>
-        <core-icon icon="social:cake"></core-icon>
+    <body fullbleed layout vertical id="body">     
+        <cust-include srcFile="main.html" targetId="body" append="true"></cust-include>        
+        <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>

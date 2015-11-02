@@ -1,4 +1,3 @@
-/* Global definitions for HTML-Template */
 html, body, div {
     height: 100%;
     margin:0;
@@ -6,24 +5,16 @@ html, body, div {
     font-family: sans-serif;
 }
 
-a {
-    color: #84FFE4;
-    text-decoration: none;
-}
-
-/* Menu definitions */
 #top-menu {
-    position: relative;
-    display: block;
-    line-height: 5%;
-    height: 5%;
     background-color: #3c3c3c;
-    vertical-align: middle;
-    box-sizing: border-box;
+    align-content: flex-start;
 }
 
 #top-menu .h1 {
+    vertical-align: middle;
     margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
     font-size: 2.4em;
     height: 100%;
 }
@@ -34,7 +25,6 @@ a {
     border: 0;
     padding: 10px;
     border-radius: 5px;
-    float:right;
     margin-right: 5px;
 }
 
@@ -42,22 +32,15 @@ a {
     background-color: #84FFFF;
 }
 
+#top-menu .horizontal-divider {
+    margin:auto;
+    margin-left: 10px;
+}
+
 #logo {
     height: 90%;
     border-radius: 200px;
-    margin: auto;
-}
-
-.v-center {
-    position: relative;
-	top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Global definitions for content */
-
-#content {
-    
+    margin: 0px;
 }
 
 #footer {
@@ -72,10 +55,8 @@ a {
 
 .horizontal-divider {
     height: 100%;
-    width: 1px;
+    width: 0px;
     border: 1px solid #84FFE4;
     margin-left: 5px;
     maring-right: 5px;
 }
-
-/* Custom definitions for each page */

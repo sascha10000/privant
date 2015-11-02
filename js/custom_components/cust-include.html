@@ -1,0 +1,42 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="cust-include">
+
+  <script>
+    Polymer({
+        is: "cust-include",
+        properties: {
+            srcfile: String,
+            targetid: String,
+            append: String
+        },
+        attached: function(){
+            // adds the import for the given source file
+            var link = document.createElement('link');
+            var targetid = this.targetid;
+            var append = this.append;
+            
+            console.log(this.append);
+            link.rel = 'import';
+            link.href = this.srcfile;
+            link.onload = function(e) {
+                // clones the templates content into the given target element
+                var tmpl = e.path[0].import.querySelector('template');
+                var clone = document.importNode(tmpl.content, true);
+                var target = document.querySelector('#'+targetid);
+                if(append == "false"){
+                    while(target.firstChild){
+                        target.removeChild(target.firstChild);
+                    }
+                }
+                console.log(append);
+                target.appendChild(clone);
+            };
+            link.onerror = function(e) {};
+            document.head.appendChild(link);
+            
+        }
+    });
+  </script>
+
+</dom-module>
