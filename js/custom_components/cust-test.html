@@ -1,0 +1,24 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="cust-test">
+    <template>
+        <input value="{{ someVal::input }}">
+        <h1>{{ someVal }}</h1>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'cust-test',
+        properties: {
+            someVal: {
+                type: String,
+                notify: true,
+                observer: 'onPropertyChanged'
+            }
+        },
+        onPropertyChanged: function(newVal){
+            console.log(newVal);
+        }
+    });
+</script>

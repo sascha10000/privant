@@ -1,0 +1,12 @@
+var routing_data = [{
+                        nameid: "landing",
+                        file: "landing.html"
+                    },
+                    {
+                        nameid: "about",
+                        file: "about.html"
+                    },
+                    {
+                        nameid: "xxx",
+                        file: "test.html"
+                    }];

@@ -1,0 +1,133 @@
+<!--
+    This component loads content that is defined in an json string. The name of the string is provided via routervar and must be set globally in the containing html file.
+    The selected attribute defines which content will be shown. As the selected attribute changes the shown content will also change.
+    
+    All attributes except globalroutername are obligatory. As far as the tag will be used more than once in the html an id and the globalroutername must be provided for all.
+
+    Javascript route example (must be loaded as javascript):
+
+    var routing_data = [{
+                        nameid: "landing",
+                        file: "landing.html"
+                    },
+                    {
+                        nameid: "about",
+                        file: "about.html"
+                    }];
+
+    The nameid will be added to each section as an attribute route, global function and url event will be registered.
+    
+    They can be used by saying:
+
+        ==> onClick="router.about()" for example regarding the fact that the globalroutername is "router"
+                            
+                            or using
+    
+        ==> href="#about"
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="cust-content-router">
+    <template>
+    </template>
+</dom-module>
+
+<script>
+    var ownerDocument = document.currentScript.ownerDocument;
+
+    Polymer({
+        is: "cust-content-router",
+        properties: {
+            routervar: String,
+            selected: {
+                type: String,
+                notify: true,
+                observer: 'onSelectionChanged'
+            },
+            globalroutername: {
+                type: String,
+                value: "router"
+            }
+        },
+        attached: function(){
+            // loads the routing definition into a local variable
+            var routing = window[this.routervar];
+            var prefix = "7349cust-content-loader_";
+            
+            // contains the global router functions
+            var router = {};
+            
+            // defines the surrouding div element
+            var pages = document.createElement('div');
+            pages.setAttribute('selected', '{{ selected }}');
+            pages.id = prefix+"contentPage";
+            
+            // iterates over all provided routes and adds sections containing the file content
+            for(var i = 0; i < routing.length; i++){
+                var route = routing[i];                
+                
+                // creates the section
+                var section = document.createElement('section');
+                section.id = route.nameid;
+                section.setAttribute('route', route.nameid);
+                section.className = prefix+'contentSection';
+                                    
+                // creates the include (see cust-include for further information)
+                var include = document.createElement('cust-include');
+                include.setAttribute('srcfile', route.file);
+                include.setAttribute('targetid', route.nameid);
+                include.setAttribute('append', 'true');
+                
+                // sets all sections invisible except the selected one
+                if(!(route.nameid === this.selected))
+                    section.style.display = 'none';
+                
+                // appends the created element to  the file
+                section.appendChild(include);
+                pages.appendChild(section.cloneNode(true));
+                
+                // adds the function for routing to an local object
+                if(this.id === '')
+                    this.id = "genid_cust-content-loader";
+                
+                var func = new Function("document.querySelector('#"+this.id+"').setAttribute('selected', '"+route.nameid+"');"+
+                                        "window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('#')) + '#"+route.nameid+"';"
+                                       );
+                router[route.nameid] = func;
+            }
+                
+            // adds the defined functions under the provided name to the global variables (default: router)
+            window[this.globalroutername] = router;
+            
+            // registers an event for reacting on hashbang urls
+            window.addEventListener('hashchange', function(e){
+                var url = e.newURL;
+                var hashbang = url.substring(url.lastIndexOf('#') + 1, url.length);
+                router[hashbang]();
+            });
+                        
+            // adds the element to the template
+            Polymer.dom(this.root).appendChild(pages);
+            
+            // checks if the url was called with any hashbangs for correct routing
+            if(window.location.href.lastIndexOf('#') != -1){
+                var url = window.location.href;
+                var hashbang = url.substring(url.lastIndexOf('#') + 1, url.length);
+                router[hashbang]();
+            }
+        },
+        
+        onSelectionChanged: function(selected){
+            var all = Polymer.dom(this.root).querySelectorAll('[route]');
+            
+            // sets the visible section if the selected attribute of this cust-content-loader is set
+            for(var i = 0; i < all.length; i++){
+                if(all[i].getAttribute('route') == selected)
+                    all[i].style.display = 'initial';
+                else
+                    all[i].style.display = 'none';    
+            }
+        }
+    });
+</script>

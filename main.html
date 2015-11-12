@@ -1,20 +1,13 @@
-<template id="main">
-    <paper-header-panel id="app" flex>
-        <paper-toolbar id="top-menu" class="medium">
-            <img src="img/AntColor3.jpg" id="logo" />
-            <span class="h1">PrivAnt</span>
-            <span class="horizontal-divider"><!--a divider--></span>
-            <button>Login</button>
-            <button>Registrieren</button>
+<template id="app" is="auto-binding">
+    <paper-header-panel flex>
+        <paper-toolbar class="medium" id="top-menu">
+            <cust-include srcFile="menu.html" targetId="topBar" append="true"></cust-include>
         </paper-toolbar>
-
-        <iron-pages selected="{{ route }}" valueattr="data-category">
-            <section data-category="index">A</section>
-            <section data-category="aboutUs">B</section>
-        </iron-pages>
-
+        
+        <cust-content-router routervar="routing_data" selected="landing"></cust-content-router>
+        
         <div id="footer">
-            <a>&Uuml;ber uns</a><span class="horizontal-divider"></span>
+            <a href="#about">&Uuml;ber uns</a><span class="horizontal-divider"></span>
         </div>
     </paper-header-panel>
 </template>

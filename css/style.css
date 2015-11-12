@@ -44,7 +44,7 @@ html, body, div {
 }
 
 #footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     height: 2%;
     width: 100%;
@@ -59,4 +59,40 @@ html, body, div {
     border: 1px solid #84FFE4;
     margin-left: 5px;
     maring-right: 5px;
+}
+
+/*
+    LANDING PAGE
+*/
+#landing_top {
+    position: relative;
+    z-index: -10;
+    height: 1000px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("../img/cover1.jpg");
+}
+
+#how_it_works {
+    text-align: center;
+    width: 100%;
+    margin-top: 15%;
+    margin-bottom: 2%;
+}
+
+#how_it_works img {
+    
+    width: 400px;
+}
+
+#how_it_works div#imgaes { 
+}
+
+div#images div {
+    display: inline;
+}
+
+div#images div span {
+    display: inline-block;
+    width: inherit;
 }

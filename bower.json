@@ -26,6 +26,8 @@
     "paper-toolbar": "PolymerElements/paper-toolbar#~1.0.4",
     "paper-button": "PolymerElements/paper-button#~1.0.8",
     "iron-pages": "PolymerElements/iron-pages#~1.0.3",
-    "page": "page.js#~1.6.4"
+    "page": "page.js#~1.6.4",
+    "more-routing": "Polymore/more-routing#~1.0.0",
+    "paper-card": "PolymerElements/paper-card#~1.0.7"
   }
 }
