@@ -1,0 +1,134 @@
+<template>
+    <!-- Needed imports -->
+    <link rel="import" href="bower_components/paper-tabs/paper-tabs.html" />
+    <link rel="import" href="bower_components/paper-button/paper-button.html" />
+    <link rel="import" href="bower_components/iron-pages/iron-pages.html" />
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html" />
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html" />
+    <link rel="import" href="bower_components/google-chart/google-chart.html" />
+
+
+    <!-- change color of tabs -->
+    <style is="custom-style">
+        :root {
+            --paper-tabs-selection-bar-color: #84FFE4;
+            --paper-tab-ink: #84FFE4;
+        }
+    </style>
+
+    <!-- Content -->
+    <h1>Statistiken</h1>
+    <!-- Create Tabs -->
+    <paper-tabs selected="{{selected}}" >
+        <paper-tab><b>Nutzerstatistiken</b></paper-tab>
+        <paper-tab><b>Veranstaltungsstatistiken</b></paper-tab>
+    </paper-tabs>
+
+    <!-- Create content of tabs -->
+    <iron-pages selected="{{selected}}">
+        <!-- First tab content -->
+        <div>
+            <div>Momentan online: <span id="userOnline"></span><paper-button raised><iron-icon icon="refresh"></iron-icon></paper-button></div>
+            <!-- Display charts in horizontal wrapping layout with automatic adjustment -->
+            <div class="horizontal layout wrap" style="width: auto;">
+                <google-chart
+                        id="regUser"
+                        type='area'
+                        options='{"title": "Registrierte Nutzer"}'>
+                </google-chart>
+                <google-chart
+                        id="activeUser"
+                        type='area'
+                        options='{"title": "Aktive Nutzer"}'>
+                </google-chart>
+            </div>
+        </div>
+        <!-- Second tab content -->
+        <div>
+            <!-- Display charts in horizontal wrapping layout with automatic adjustment -->
+            <div class="horizontal layout wrap" style="width: auto;">
+                <google-chart
+                        id="createdEvents"
+                        type='area'
+                        options='{"title": "Erstellte Events"}'>
+                </google-chart>
+                <google-chart
+                        id="privateEvents"
+                        type='area'
+                        options='{"title": "Erstellte private Events"}'>
+                </google-chart>
+                <google-chart
+                        id="currentEvents"
+                        type='area'
+                        options='{"title": "Aktuell offene Events"}'>
+                </google-chart>
+            </div>
+            <!-- Display chart in next row (other chart type) -->
+            <google-chart
+                    id="categorizedEvents"
+                    type='bar'
+                    options='{"title": "Erstellte Events nach Kategorie"}'>
+            </google-chart>
+        </div>
+    </iron-pages>
+
+    <script>
+
+        /* Change iron page when tab is selected */
+        document.querySelector("paper-tabs").addEventListener("iron-select", function(e){
+            var pages = document.querySelector('iron-pages');
+            pages.select(this.selected);
+            drawCharts();
+        })
+
+        /* Update number of online users when button is clicked */
+        document.querySelector("paper-button").addEventListener("click", getOnlineUsers());
+
+        /* Get the number of online users from database */
+        function getOnlineUsers() {
+            var online = document.createTextNode("5");
+            var span = document.querySelector('#userOnline');
+            span.innerHTML='';
+            span.appendChild(online);
+        }
+
+        /* Fill Google Charts with data and draw charts */
+        function drawCharts() {
+            var googleChart = document.querySelector('#regUser');
+            /* Function for getting data is missing, at the moment raw data is inserted */
+            googleChart.setAttribute("data", '[["Monat", "Anzahl"], ["Okt", 0], ["Nov", 1], ["Dez", 12], ["Jan", 20], ["Feb", 30], ["Mar", 35]]');
+            googleChart.drawChart();
+
+            googleChart = document.querySelector('#activeUser');
+            googleChart.setAttribute("data", '[["Monat", "Anzahl"], ["Okt", 0], ["Nov", 1], ["Dez", 12], ["Jan", 20], ["Feb", 30], ["Mar", 35]]');
+            googleChart.drawChart();
+
+            var googleChart = document.querySelector('#createdEvents');
+            /* Function for getting data is missing, at the moment raw data is inserted */
+            googleChart.setAttribute("data", '[["Monat", "Anzahl"], ["Okt", 0], ["Nov", 1], ["Dez", 12], ["Jan", 20], ["Feb", 30], ["Mar", 35]]');
+            googleChart.drawChart();
+
+            var googleChart = document.querySelector('#privateEvents');
+            /* Function for getting data is missing, at the moment raw data is inserted */
+            googleChart.setAttribute("data", '[["Monat", "Anzahl"], ["Okt", 0], ["Nov", 1], ["Dez", 12], ["Jan", 20], ["Feb", 30], ["Mar", 35]]');
+            googleChart.drawChart();
+
+            var googleChart = document.querySelector('#currentEvents');
+            /* Function for getting data is missing, at the moment raw data is inserted */
+            googleChart.setAttribute("data", '[["Monat", "Anzahl"], ["Okt", 0], ["Nov", 1], ["Dez", 12], ["Jan", 20], ["Feb", 30], ["Mar", 35]]');
+            googleChart.drawChart();
+
+            var googleChart = document.querySelector('#categorizedEvents');
+            /* Function for getting data is missing, at the moment raw data is inserted */
+            googleChart.setAttribute("data", '[["Kategorie", "Anzahl"], ["Rock", 3], ["Hip Hop", 5], ["Elektronisch", 12], ["Festival", 20], ["Party", 30]]');
+            googleChart.drawChart();
+
+        }
+
+        /* Function for getting data from database and process data */
+        function getStatisticsData() {
+
+        }
+    </script>
+
+</template>

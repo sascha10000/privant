@@ -9,4 +9,8 @@ var routing_data = [{
                     {
                         nameid: "xxx",
                         file: "test.html"
+                    },
+                    {
+                        nameid: "statistics",
+                        file: "statistics.html"
                     }];
