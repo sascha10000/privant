@@ -32,5 +32,7 @@
     "angular": "~1.4.7",
     "angular-ui-router": "~0.2.15",
     "sascha10k-content-router": "*"
+    "paper-tabs": "PolymerElements/paper-tabs#~1.1.0",
+    "google-chart": "GoogleWebComponents/google-chart#~1.0.4"
   }
 }
