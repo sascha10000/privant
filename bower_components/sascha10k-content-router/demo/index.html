@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel="import" href="../sascha10k-content-router.html" />
+        <script src="route.js"></script>
+    </head>
+    <body>
+        <style>
+            sascha10k-content-router  div{
+                border: 1px solid black;
+                margin: 10px;
+                padding: 20px;
+            }
+        </style>
+        
+        <!-- 3 Router with the same content. The first two are identical. The last one will be controlled separatly. --> 
+        Router 1: <sascha10k-content-router routervar="myRoute" selected="page1"></sascha10k-content-router>
+        Router 1: <sascha10k-content-router routervar="myRoute" selected="page1"></sascha10k-content-router>
+        Router 2: <sascha10k-content-router routervar="myRoute" selected="page2" globalroutername="router2"></sascha10k-content-router>
+        Hashbang via URL (#):<br/>
+        <a href="#router_page1">Page 1 Router 1</a><br/>
+        <a href="#router_page2">Page 2 Router 1</a>
+        <br/><br>
+        <a href="#router2_page1">Page 1 Router 2</a><br/>
+        <a href="#router2_page2">Page 2 Router 2</a>
+        <br/><br/>
+        OnClick via Javascript:<br/>
+        <button onclick="router.page1()">Page 1 Router 1</button><br/>
+        <button onclick="router.page2()">Page 2 Router 1</button>
+        <br/><br>
+        <button onclick="router2.page1()">Page 1 Router 2</button><br/>
+        <button onclick="router2.page2()">Page 2 Router 2</button>
+    </body>
+</html>

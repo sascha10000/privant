@@ -1,0 +1,57 @@
+<!-- 
+    This Webcomponent takes the given srcfile adds an link element in the dom tree referencing to the given srcfile. Then it will load the
+    containing templates content and put it under the element with the given id provided by targetid. Append only says if it will replace all
+    the content under the element given by targetid or not.
+-->
+
+<link rel="import" href="../../polymer/polymer.html">
+
+<dom-module id="sascha10k-include">
+    <template>
+    </template>
+</dom-module>
+
+<script>
+Polymer({
+    is: "sascha10k-include",
+    properties: {
+        srcfile: String,
+        targetid: {
+            type:String,
+            value: ''
+        },
+        append: String
+    },
+    attached: function(){
+        // adds the import for the given source file
+        var link = document.createElement('link');
+        var targetid = this.targetid;
+        var append = this.append;
+        var that = this;
+        
+        
+        link.rel = 'import';
+        link.href = this.srcfile;
+        link.onload = function(e) {
+            // clones the templates content into the given target element
+            var tmpl = e.path[0].import.querySelector('template');
+            var clone = document.importNode(tmpl.content, true);
+            var target = {}
+
+            if(targetid === '')
+                target = Polymer.dom(that.root);
+            else
+                target = document.querySelector('#'+targetid);
+            
+            if(append == "false"){
+                while(target.firstChild){
+                    target.removeChild(target.firstChild);
+                }
+            }
+            target.appendChild(clone);
+        };
+        link.onerror = function(e) {};
+        document.head.appendChild(link);
+    }
+});
+</script>

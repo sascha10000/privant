@@ -26,9 +26,10 @@
         ==> href="#about"
 -->
 
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="additional/sascha10k-include.html" />
 
-<dom-module id="cust-content-router">
+<dom-module id="sascha10k-content-router">
     <template>
     </template>
 </dom-module>
@@ -37,7 +38,7 @@
     var ownerDocument = document.currentScript.ownerDocument;
 
     Polymer({
-        is: "cust-content-router",
+        is: "sascha10k-content-router",
         properties: {
             routervar: String,
             selected: {
@@ -53,6 +54,9 @@
         attached: function(){
             // loads the routing definition into a local variable
             var routing = window[this.routervar];
+            if(routing == undefined) 
+                console.error("Variable "+this.routervar+" not found. You need to make it globally accessible.");
+                        
             var prefix = "7349cust-content-loader_";
             
             // contains the global router functions
@@ -67,6 +71,9 @@
             for(var i = 0; i < routing.length; i++){
                 var route = routing[i];                
                 
+                if(route.nameid.indexOf("_") != -1)
+                    console.error("You may not use underscores ('_') in the nameid.");
+                
                 // creates the section
                 var section = document.createElement('section');
                 section.id = route.nameid;
@@ -74,9 +81,9 @@
                 section.className = prefix+'contentSection';
                                     
                 // creates the include (see cust-include for further information)
-                var include = document.createElement('cust-include');
+                var include = document.createElement('sascha10k-include');
                 include.setAttribute('srcfile', route.file);
-                include.setAttribute('targetid', route.nameid);
+                //include.setAttribute('targetid', route.nameid);
                 include.setAttribute('append', 'true');
                 
                 // sets all sections invisible except the selected one
@@ -89,30 +96,45 @@
                 
                 // adds the function for routing to an local object
                 if(this.id === '')
-                    this.id = "genid_cust-content-loader";
+                    this.id = "genid_"+this.globalroutername+"_cust-content-loader";
                 
-                var func = new Function("document.querySelector('#"+this.id+"').setAttribute('selected', '"+route.nameid+"');"+
-                                        "window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('#')) + '#"+route.nameid+"';"
-                                       );
+                var func = new Function("var elems = document.querySelectorAll('#"+this.id+"');"+
+                                        "for(var i = 0; i < elems.length; i++) elems[i].setAttribute('selected', '"+route.nameid+"');"+
+                                        "window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('#')) + '#"+this.globalroutername+"_"+route.nameid+"';");
                 router[route.nameid] = func;
             }
                 
             // adds the defined functions under the provided name to the global variables (default: router)
             window[this.globalroutername] = router;
             
+            
+            // compares the urls regarding to the globalroutername
+            var getHashbangPrefix = function(url, routername){
+                var sub = url.substring(url.lastIndexOf('#') + 1, url.lastIndexOf('_'));
+                if(routername === sub)
+                    return routername;
+                else
+                    undefined;
+            }
+            
             // registers an event for reacting on hashbang urls
+            var routername = this.globalroutername;
             window.addEventListener('hashchange', function(e){
-                var url = e.newURL;
-                var hashbang = url.substring(url.lastIndexOf('#') + 1, url.length);
-                router[hashbang]();
+                // checks if the hashbang identifies this router (relevant if more than 1 router)
+                var hbPrefix = getHashbangPrefix(e.newURL, routername);
+                if(hbPrefix != undefined){
+                    var url = e.newURL.replace(routername+"_", "");
+                    var hashbang = url.substring(url.lastIndexOf('#') + 1, url.length);
+                    router[hashbang]();
+                }
             });
                         
             // adds the element to the template
             Polymer.dom(this.root).appendChild(pages);
             
-            // checks if the url was called with any hashbangs for correct routing
-            if(window.location.href.lastIndexOf('#') != -1){
-                var url = window.location.href;
+            // checks if the index page was called with any hashbangs for correct initial routing
+            if(window.location.href.lastIndexOf('#') != -1 && getHashbangPrefix(window.location.href, routername) != undefined){
+                var url = window.location.href.replace(routername + "_", "");
                 var hashbang = url.substring(url.lastIndexOf('#') + 1, url.length);
                 router[hashbang]();
             }
@@ -120,7 +142,7 @@
         
         onSelectionChanged: function(selected){
             var all = Polymer.dom(this.root).querySelectorAll('[route]');
-            
+
             // sets the visible section if the selected attribute of this cust-content-loader is set
             for(var i = 0; i < all.length; i++){
                 if(all[i].getAttribute('route') == selected)

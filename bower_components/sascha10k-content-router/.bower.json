@@ -1,0 +1,34 @@
+{
+  "name": "sascha10k-content-router",
+  "homepage": "https://github.com/sascha10000/sascha10k-content-router.git",
+  "authors": [
+    "Sascha Düpre"
+  ],
+  "description": "Loads html files and handles global routing in an easy manner.",
+  "main": "",
+  "keywords": [
+    "Polymer",
+    "Webcomponents",
+    "Router"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.2.1"
+  },
+  "_release": "12aed17883",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "12aed1788371b6ed90b7d6fe4facd0fa47cd133a"
+  },
+  "_source": "git://github.com/sascha10000/sascha10k-content-router.git",
+  "_target": "*",
+  "_originalSource": "sascha10k-content-router"
+}

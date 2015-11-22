@@ -14,7 +14,7 @@
 
         
         <link rel="import" href="js/custom_components/cust-include.html" />
-        <link rel="import" href="js/custom_components/cust-content-router.html" />
+        <link rel="import" href="bower_components/sascha10k-content-router/sascha10k-content-router.html" />
         
         <!-- routing information -->
         <script type="text/javascript" src="routing.json"></script>
@@ -26,7 +26,7 @@
     <!-- The index.html just imports relevant files and will be filled with the content of main.html which is defining the general layout of the page.
          Thus it's possible to change the main layout if needed without having too much content in the index.html (divide and conquer principle).
     -->
-    <body fullbleed layout vertical id="body">
+    <body fullbleed layout vertical id="body" >
         <cust-include srcFile="main.html" targetId="body" append="true"></cust-include>
         <script type="text/javascript" src="js/app.js"></script>
     </body>

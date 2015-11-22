@@ -28,6 +28,9 @@
     "iron-pages": "PolymerElements/iron-pages#~1.0.3",
     "page": "page.js#~1.6.4",
     "more-routing": "Polymore/more-routing#~1.0.0",
-    "paper-card": "PolymerElements/paper-card#~1.0.7"
+    "paper-card": "PolymerElements/paper-card#~1.0.7",
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "sascha10k-content-router": "*"
   }
 }
