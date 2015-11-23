@@ -142,7 +142,7 @@
         
         onSelectionChanged: function(selected){
             var all = Polymer.dom(this.root).querySelectorAll('[route]');
-
+            console.log(selected);
             // sets the visible section if the selected attribute of this cust-content-loader is set
             for(var i = 0; i < all.length; i++){
                 if(all[i].getAttribute('route') == selected)

@@ -1,16 +1,21 @@
-var routing_data = [{
+var routing_main = [{
+                        nameid: "loggedIn",
+                        file: "main.loggedin.html"
+                    },
+                    {
+                        nameid: "loggedOut",
+                        file: "main.loggedout.html"
+                    }];
+
+var routing_loggedOut = [{
                         nameid: "landing",
                         file: "landing.html"
                     },
                     {
-                        nameid: "about",
-                        file: "about.html"
-                    },
-                    {
-                        nameid: "xxx",
-                        file: "test.html"
-                    },
-                    {
                         nameid: "statistics",
                         file: "statistics.html"
+                    },
+                    {
+                        nameid: "recommendations",
+                        file: "recommendations.html"
                     }];

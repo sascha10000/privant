@@ -1,4 +1,4 @@
-// registers registered users
+// creates and registers users
 var users = new Users();
 
 users.add(new User("Hans08", "dfhdf8wfewe9f0wef", "hans1976@web.de", "user", true, "unknown.png", "Hi ich bin der Hans", "01112015", "21112015 17:45"));
@@ -111,7 +111,7 @@ users.add(new User("dingoquiver","2396071.207686059","mwashington2r@shareasale.c
 
 // creates some events and lets attend all users (for testing)
 var events = new Events();
-var publicEvent = new Event("StreetArt 8 Dortmund", "Ein Festival für Künstler, Genießer und Ausgefallene Straßenkunst im urbanen Raum", "Dortmund", new Date(2015, 12, 12),
+var publicEvent = new Event("StreetArt 8 Dortmund", "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum", "Dortmund", new Date(2015, 12, 12),
                             users.findUserByName("Sascha"), false, new Date(2015, 01, 08), 6);
 
 console.log("======== Public Event (max "+publicEvent.maxUser+") =========");

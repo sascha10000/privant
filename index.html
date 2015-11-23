@@ -31,7 +31,8 @@
          Thus it's possible to change the main layout if needed without having too much content in the index.html (divide and conquer principle).
     -->
     <body fullbleed layout vertical id="body" >
-        <cust-include srcFile="main.html" targetId="body" append="true"></cust-include>
+        <!--<sascha10k-content-router routervar="routing_main" selected="loggedOut" globalroutername="main"></sascha10k-content-router>-->
+        <cust-include srcFile="main.loggedout.html" targetId="body" append="true"></cust-include>
         <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>
