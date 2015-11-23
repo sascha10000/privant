@@ -1,9 +1,8 @@
 <template id="app" is="auto-binding">
     <paper-header-panel flex>
         <paper-toolbar class="medium" id="top-menu">
-            <cust-include srcFile="menu.html" targetId="topBar" append="true"></cust-include>
+            <sascha10k-include srcFile="menu.html" targetId="topBar" append="true"></sascha10k-include>
         </paper-toolbar>
-        <span>Router läuft nicht!?</span>
         <sascha10k-content-router routervar="routing_loggedOut" selected="landing"></sascha10k-content-router>
         
         <div id="footer">

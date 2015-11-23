@@ -89,6 +89,8 @@
                 // sets all sections invisible except the selected one
                 if(!(route.nameid === this.selected))
                     section.style.display = 'none';
+                else
+                    section.style.display = 'initial';
                 
                 // appends the created element to  the file
                 section.appendChild(include);
@@ -120,6 +122,7 @@
             // registers an event for reacting on hashbang urls
             var routername = this.globalroutername;
             window.addEventListener('hashchange', function(e){
+                console.log(e);
                 // checks if the hashbang identifies this router (relevant if more than 1 router)
                 var hbPrefix = getHashbangPrefix(e.newURL, routername);
                 if(hbPrefix != undefined){
@@ -142,7 +145,7 @@
         
         onSelectionChanged: function(selected){
             var all = Polymer.dom(this.root).querySelectorAll('[route]');
-            console.log(selected);
+
             // sets the visible section if the selected attribute of this cust-content-loader is set
             for(var i = 0; i < all.length; i++){
                 if(all[i].getAttribute('route') == selected)

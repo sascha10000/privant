@@ -12,9 +12,8 @@
         <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html" />
         <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html" />
 
-        
-        <link rel="import" href="js/custom_components/cust-include.html" />
         <link rel="import" href="bower_components/sascha10k-content-router/sascha10k-content-router.html" />
+        <link rel="import" href="bower_components/sascha10k-content-router/additional/sascha10k-include.html" />
         
         <!-- routing information -->
         <script type="text/javascript" src="routing.json"></script>
@@ -24,15 +23,14 @@
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/MockUser.js"></script>
         <script type="text/javascript" src="js/MockEvent.js"></script>
-        <script type="text/javascript" src="js/mockData.js"></script>
-                
+        <script type="text/javascript" src="js/mockData.js"></script>  
     </head>
     <!-- The index.html just imports relevant files and will be filled with the content of main.html which is defining the general layout of the page.
          Thus it's possible to change the main layout if needed without having too much content in the index.html (divide and conquer principle).
     -->
     <body fullbleed layout vertical id="body" >
-        <!--<sascha10k-content-router routervar="routing_main" selected="loggedOut" globalroutername="main"></sascha10k-content-router>-->
-        <cust-include srcFile="main.loggedout.html" targetId="body" append="true"></cust-include>
+        <sascha10k-content-router routervar="routing_main" selected="loggedOut" globalroutername="main"></sascha10k-content-router>
+        <!--<cust-include srcFile="main.loggedout.html" targetId="body" append="true"></cust-include>-->
         <script type="text/javascript" src="js/app.js"></script>
     </body>
 </html>

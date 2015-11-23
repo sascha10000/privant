@@ -11,11 +11,16 @@ var routing_loggedOut = [{
                         nameid: "landing",
                         file: "landing.html"
                     },
-                    {
-                        nameid: "statistics",
-                        file: "statistics.html"
-                    },
+
                     {
                         nameid: "recommendations",
                         file: "recommendations.html"
-                    }];
+                    },
+                     {
+                        nameid: "about",
+                        file: "about.html"
+                     },
+			{
+                        nameid: "statistics",
+                        file: "statistics.html"
+                     }];

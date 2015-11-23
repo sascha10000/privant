@@ -1,5 +1,5 @@
 // manages and represents a single Event
-function Event(title, description, city, date, createdBy, private, createdAt, maxUser){
+function PEvent(title, description, city, date, createdBy, private, createdAt, maxUser){
     this.title = title;
     this.description = description;
     this.city = city;
