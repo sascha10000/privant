@@ -33,6 +33,7 @@
     "angular-ui-router": "~0.2.15",
     "paper-tabs": "PolymerElements/paper-tabs#~1.1.0",
     "google-chart": "GoogleWebComponents/google-chart#~1.0.4",
-    "sascha10k-content-router": "~1.1.0"
+    "sascha10k-content-router": "~1.1.0",
+    "cust-collapsible-list": "JessicaBL/cust-collapsible-list"
   }
 }
