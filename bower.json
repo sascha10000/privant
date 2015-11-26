@@ -35,6 +35,7 @@
     "google-chart": "GoogleWebComponents/google-chart#~1.0.4",
     "sascha10k-content-router": "~1.1.0",
     "paper-drawer-panel": "PolymerElements/paper-drawer-panel#~1.0.5",
-    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1"
+    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
+    "cust-collapsible-list": "JessicaBL/cust-collapsible-list"
   }
 }
