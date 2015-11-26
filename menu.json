@@ -1,0 +1,42 @@
+var menu_items = [
+    {
+        title: "Statistiken",
+        link: "#loin_statistics",
+        toggle: false
+    },
+    {
+        title: "Profil",
+        toggle: true,
+        pages: [{ 
+                title: "Anzeigen",
+                link: "#loin_showProfile",
+                toggle: false
+            },
+               { 
+                title: "Ändern",
+                link: "#loin_changeProfile",
+                toggle: false
+            }]
+    },
+    {
+        title: "Benachrichtgungen",
+        link: "#loin_notifications",
+        toggle: false
+    },
+    {
+        title: "Empfehlungen",
+        link: "#loin_recommendations",
+        toggle: false
+    },
+    {
+        title: "Events",
+        toggle: true,
+        pages: [
+            { 
+                title: "New Event",
+                link: "#loin_newEvent",
+                toggle: false
+            }
+        ]
+    }
+];

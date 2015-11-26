@@ -111,16 +111,15 @@ users.add(new User("dingoquiver","2396071.207686059","mwashington2r@shareasale.c
 
 // creates some events and lets attend all users (for testing)
 var events = new Events();
-var publicEvent = new PEvent("StreetArt 8 Dortmund", "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum", "Dortmund", new Date(2015, 12, 12),
-                            users.findUserByName("Sascha"), false, new Date(2015, 01, 08), 6);
+var publicEvent = new PEvent("1","StreetArt 8 Dortmund", "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum", "Dortmund", new Date(2015, 12, 12),
+                            users.findUserByName("Sascha"), false, new Date(2015, 01, 08), 6, ["art", "street","kunst"]);
 
 console.log("======== Public Event (max "+publicEvent.maxUser+") =========");
 users.iterate(function(user){
     console.log(user.name +": "+publicEvent.attend(user));
 });
 
-var privateEvent = new PEvent("Hansis Winterfete", "Ich mache eine kleine sause zu den Festlichkeiten. Über zahlreiches Erscheinen freue ich mich.", "Bad Salzufflen", new Date(2015, 12, 20),
-                            users.findUserByName("Hans08"), true, new Date(2015, 10, 11), 4);
+var privateEvent = new PEvent("2","Hansis Winterfete", "Ich mache eine kleine sause zu den Festlichkeiten. Über zahlreiches Erscheinen freue ich mich.", "Bad Salzufflen", new Date(2015, 12, 20), users.findUserByName("Hans08"), true, new Date(2015, 10, 11), 4, ["weihnachten","Winter", "Party"]);
 
 /* 
     1. Participants will be added

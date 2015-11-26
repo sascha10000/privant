@@ -1,0 +1,26 @@
+[{
+  "rank" : "2",
+  "event" : {
+      "id": "1",
+      "title": "Street Art 8 Dortmund",
+      "description" : "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum",
+      "city":"Dortmund",
+      "date":"2015-12-12",
+      "createdBy": "Sascha",
+      "private" : false,
+      "createdAt" : "2015-08-01",
+      "maxUser": 6,
+      tags: ["art", "street", "kunst"]
+  },
+}]
+
+<!-- 
+    Auserwertungen und Anzeigemöglichkeiten:
+    - Events die andere User besuchen, mit denen du gemeinsam Events besuchst
+        - Anzeige: Auf Basis welcher User wurde die Empfehlung gegeben
+    - Orte an denen du bereits Events besuchst
+        - Ort
+    - Tags die andere Events mit den von dir besuchten Events teilen
+        - Tags
+    - Private Events auf denen du auf der Liste stehst
+-->

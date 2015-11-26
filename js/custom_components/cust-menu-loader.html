@@ -1,0 +1,84 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+
+<dom-module id="cust-menu-loader">
+    <style>
+        .hide {
+            display:none;
+            opacity: 0;
+        }
+        
+        .show {
+            opacity: 1;
+            display: inline;
+            transition: opacity 2s linear;    
+        }
+        .sublink {
+            transition: opacity 2s linear;
+        }
+        
+        .cust-menu-loader.link, .cust-menu-loader.toggle {
+            margin: 20px;
+            padding: 5px;
+        }
+        
+        .cust-menu-loader.sublink {
+            margin: 30px;
+        }
+        
+        .toggle {
+            color: #84FFE4;
+        }
+    </style>
+    
+    <!-- Builds the Menu from a provided Object (JSON). Decides how to display wether it's a link or an toggle entry. -->
+    <template>
+        <template is="dom-repeat" items="{{ menu_items }}">
+            <template is="dom-if" if="{{!item.toggle}}">
+                <a class="link" href="[[item.link]]">[[ item.title ]]</a><br />
+            </template>
+            
+            <template is="dom-if" if="{{item.toggle}}">
+                <span>
+                    <span class="toggle" on-click="toggle">[[ item.title ]]</span><br/>
+                    <template is="dom-repeat" items="{{ item.pages }}" as="subitem">
+                        <a class="link sublink hide" href="[[subitem.link]]">[[ subitem.title ]]</a><br />
+                    </template>
+                </span>
+                
+            </template>
+        </template>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+        is: 'cust-menu-loader',
+        properties: {
+            menu: {
+                type: String,
+                notify: true
+            }
+        },
+        ready: function(){
+            this.menu_items = window[this.menu];
+        },
+        toggle: function(event, detail){
+            var node = event.srcElement.parentNode;
+            var all = node.querySelectorAll('a');
+            
+            for(var i = 0; i < all.length; i++){
+                if(all[i].className.indexOf('hide') > -1){
+                    all[i].style.display = 'inline';
+                    all[i].className = all[i].className.replace('hide','show');
+                }
+                else {
+                    all[i].className = all[i].className.replace('show','hide');
+                    all[i].addEventListener('transitionend',function(e){
+                        e.srcElement.style.display = 'none';
+                    }, false);
+                }
+                
+                console.log(all[i].className);
+            }
+        }
+    });
+</script>

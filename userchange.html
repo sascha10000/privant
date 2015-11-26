@@ -1,0 +1,68 @@
+<template>
+    <link rel="shortcut icon" type="image/x-icon" href="AntCircle.png" />
+
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+            <script>
+                $(function() {
+                    var user = [];
+                    $.getJSON('user.json', function(data){
+                            document.getElementById("regNamensfeld").value = data.user[0].username;
+                            document.getElementById("regPasswort").value = data.user[0].passwort;
+                            document.getElementById("regEmail").value = data.user[0].email;
+                            document.getElementById("regBeschreibung").value = data.user[0].ueber_mich;
+                            document.getElementById("uploadbild").src = data.user[0].profilbild;
+                    });
+
+                });
+            </script>
+            
+            <h3>Profil</h3>
+
+
+                <form name="profilAendernFormular" id="profilAendernFormular" onsubmit="daten_speichern(); daten_ausgeben(); return false;" action="user.json" >
+                    Name:*                  <input name="Namensfeld" id="regNamensfeld" type="text"><br/><br/>
+                    Passwort:*              <input name="Passwortfeld" id="regPasswort" type="password"><br/><br/>
+                    E-Mail:*                <input name="EMailFeld" id="regEmail" type="email"><br/><br/>
+                    Kurzbeschreibung:       <textarea name="Beschreibung" id="regBeschreibung" cols="30" rows="4"></textarea><br/><br/>
+                    <p id="regHinweisPflichtfeld">* Pflichtfelder</p><br>
+                    <h5 id="labelBild">Profilbild ändern</h5>
+                    <input type="file" class="dateiHochladen" id="dateiHochladen" name="files[]" onchange="hinzufuegen(document.images[0].src=this.value)"/><br/>
+                    <img id="uploadbild" src="" /> <br/>
+                    <input type="submit" id="regButton" value="Ändern">
+                </form>
+
+
+
+
+        </body>
+
+       <sript hidden="false">
+            var user = new User();
+            user.name = regNamensfeld.value;
+            user.passwort = regPasswort.value;
+            user.email = regEmail.value;
+            user.ueber_mich = regBeschreibung.value;
+        </sript>
+    <script>
+        function hinzufuegen(zwerg){
+            document.getElementById("uploadbild").src = zwerg;
+        }
+        function daten_speichern(){
+            localStorage.setItem("localName", document.getElementById("regNamensfeld").value);
+            localStorage.setItem("localPasswort", document.getElementById("regPasswort").value);
+            localStorage.setItem("localEmail", document.getElementById("regEmail").value);
+            localStorage.setItem("localBeschreibung", document.getElementById("regBeschreibung").value);
+
+        }
+        function daten_ausgeben() {
+            console.log("Name: " + localStorage.getItem("localName"));
+            console.log("Passwort: " + localStorage.getItem("localPasswort"));
+            console.log("Email: " + localStorage.getItem("localEmail"));
+            console.log("Beschreibung: " + localStorage.getItem("localBeschreibung"));
+        }
+    </script>
+
+
+
+    <hr/>
+    </template>

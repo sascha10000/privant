@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html" />
+
+<dom-module id="cust-recommendations">
+    <style>
+        paper-card.cust-recommendations.event {
+            box-shadow: 0px 0px 18px -2px rgba(0,0,0,0.75);
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        .cust-recommendations.event .city {
+            font-style: italic;
+        }
+        
+        span.cust-recommendations.title {
+            font-size: 14pt;
+        }
+    </style>
+    <template>
+        <iron-ajax auto url="{{ src }}" lastResponse="{{ data }}" handleAs="json"  debounce-duration="300"></iron-ajax>
+        <template is="dom-repeat" items="{{ data }}">
+            <paper-card class="event">
+                <span class="title">{{ item.event.title }}</span><br/>
+                <span>"{{ item.event.description }}"</span><br/>
+                <span class="city">{{ item.event.city }}</span><br/><br/>
+                <span>{{ item.event.date }}</span>
+            </paper-card>
+        </template>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'cust-recommendations',
+        properties: {
+            src: {type: String},
+            data: {type: String, notify: true}
+        },
+        ready: function(){
+            this.data = [{
+              "rank" : "2",
+              "event" : {
+                  "id": "1",
+                  "title": "Street Art 8 Dortmund",
+                  "description" : "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum",
+                  "city":"Dortmund",
+                  "date":"2015-12-12",
+                  "createdBy": "Sascha",
+                  "private" : false,
+                  "createdAt" : "2015-08-01",
+                  "maxUser": 6,
+                  tags: ["art", "street", "kunst"]
+              }
+            },
+            {
+              "rank" : "2",
+              "event" : {
+                  "id": "1",
+                  "title": "Street Art 8 Dortmund",
+                  "description" : "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum",
+                  "city":"Dortmund",
+                  "date":"2015-12-12",
+                  "createdBy": "Sascha",
+                  "private" : false,
+                  "createdAt" : "2015-08-01",
+                  "maxUser": 6,
+                  tags: ["art", "street", "kunst"]
+              }
+            },
+            {
+              "rank" : "2",
+              "event" : {
+                  "id": "1",
+                  "title": "Street Art 8 Dortmund",
+                  "description" : "Ein Festival für Künstler, Genießer und ausgefallene Straßenkunst im urbanen Raum",
+                  "city":"Dortmund",
+                  "date":"2015-12-12",
+                  "createdBy": "Sascha",
+                  "private" : false,
+                  "createdAt" : "2015-08-01",
+                  "maxUser": 6,
+                  tags: ["art", "street", "kunst"]
+              }
+            }];
+        }
+    });
+</script>

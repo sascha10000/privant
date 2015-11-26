@@ -1,12 +1,12 @@
 {
   "name": "sascha10k-content-router",
-  "version" : "1.1.0",
+  "version" : "1.1.2",
   "homepage": "https://github.com/sascha10000/sascha10k-content-router.git",
   "authors": [
     "Sascha Düpre"
   ],
   "description": "Loads html files and handles global routing in an easy manner.",
-  "main": "",
+  "main": "sascha10k-content-router.html",
   "keywords": [
     "Polymer",
     "Webcomponents",

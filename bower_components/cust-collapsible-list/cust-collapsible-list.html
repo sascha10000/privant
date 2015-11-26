@@ -1,0 +1,162 @@
+<!-- Creates a collapsible list of content specified in an array. The user can remove every single item in the collapsible list.
+     By default, the content will be collapsed.
+
+     The element can be created in the following way:
+
+     <cust-collapsible-list data-set='
+                            [{"dataheader": "anyValue","datacontent": "anyValue"},
+                            {"dataheader": "anyOtherValue","datacontent": "anyOtherValue"}]'>
+     </cust-collapsible-list>
+
+     NOTE: The attribute data-set must be an array containing double quoted JSON. It is necessary to use the parameters dataheader and datacontent.
+
+     The style of the elements in the container div shouldn't be changed except color issues.
+     To change the size of the collapsible list add size parameters to the container div.
+
+     -->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+
+<dom-module id="cust-collapsible-list">
+
+    <style>
+
+        .container {
+            margin: 0 30px;
+        }
+
+        .header {
+            background-color: #f3f3f3;
+            border: 1px solid #454545;
+            padding: 10px 15px;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        a {
+            float: right;
+            cursor: pointer;
+        }
+
+        .content {
+            border: 1px solid #454545;
+            border-top: 0px;
+            padding: 10px 15px;
+            text-align: left;
+            display: none;
+            height: auto;
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .header {
+                font-size: 16px;
+            }
+
+            iron-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .content {
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (min-width: 480px) and (max-width: 1024px) {
+
+            .header {
+                font-size: 18px;
+            }
+
+            iron-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .content {
+                font-size: 16px;
+            }
+        }
+
+        @media only screen and (min-width: 1025px) {
+
+            .header {
+                font-size: 20px;
+            }
+
+            iron-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .content {
+                font-size: 18px;
+            }
+
+        }
+
+
+    </style>
+
+    <template>
+        <div class="container">
+            <template is="dom-repeat" items="{{dataSet}}">
+                <button class="header" id="header#{{index}}" on-click="toggleContent">{{item.dataheader}}<a on-click="removeDataset"><iron-icon icon="close"></iron-icon></a></button>
+                <div class="content" id="content#{{index}}">{{item.datacontent}}</div>
+            </template>
+        </div>
+    </template>
+
+
+</dom-module>
+
+<script>
+    Polymer({
+
+        is: "cust-collapsible-list",
+
+        properties: {
+
+            /**
+             * Defines the array with data for populating the collapsible list
+             */
+            dataSet: {
+                type: Array
+            }
+
+        },
+
+        /**
+         * Toggle the content div with the specified id
+         */
+        toggleContent: function(e) {
+            var id = e.target.id;
+            var elementIndex = id.split('#')[1];
+            var content = document.querySelector("#content\\#"+elementIndex);
+            if (content.style.display == 'block'){
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        },
+
+        /**
+         * Remove elements with the specified id and its content from collapsible list
+         */
+        removeDataset: function(e) {
+            var removeElement = e.target;
+            var headerElement = removeElement.parentNode.parentNode;
+            var id = headerElement.id;
+            headerElement.parentNode.removeChild(headerElement);
+            var elementIndex = id.split('#')[1];
+            var contentElement = document.querySelector("#content\\#"+elementIndex);
+            contentElement.parentNode.removeChild(contentElement);
+        }
+    })
+
+
+</script>

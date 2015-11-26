@@ -1,1 +1,21 @@
-<template></template>
+<template id="app" is="auto-binding">
+    <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html" />
+    <paper-drawer-panel id="paperDrawerPanel">
+        <div drawer>
+            <paper-toolbar id="top-menu">
+            </paper-toolbar>
+            <div><cust-menu-loader menu="menu_items"></cust-menu-loader></div>
+        </div>
+        <paper-header-panel main>
+            <paper-toolbar id="top-menu">
+                <sascha10k-include srcFile="menu.loggedin.html" appendToParent="true" targetid="topBar"></sascha10k-include>
+            </paper-toolbar>
+            
+            <sascha10k-content-router class="dynContent" routervar="routing_loggedIn" selected="statistics" globalroutername="loin"></sascha10k-content-router>
+
+            <div id="footer">
+                <a href="#routein_about">&Uuml;ber uns</a><span class="horizontal-divider"></span>
+            </div>
+        </paper-header-panel>
+    </paper-drawer-panel>
+</template>

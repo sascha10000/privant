@@ -1,0 +1,40 @@
+<template>
+<!--    <title>PrivAnt</title>
+
+            <h3>Login</h3>-->
+
+                <form name="loginFormular" id="loginFormular" onsubmit=" daten_pruefen(); return false;" >
+                    Name:                  <input name="Namensfeld" id="regNamensfeld" type="text"><br/><br/>
+                    Passwort:              <input name="Passwortfeld" id="regPasswort" type="password"><br/><br/>
+                    <div id="label"></div>
+                    <input type="submit" id="regButton" value="Einloggen">
+                </form>
+
+
+    <script>
+        function daten_pruefen() {
+            if((document.getElementById("regNamensfeld").value) ==  localStorage.getItem("localName")&&
+                    document.getElementById("regPasswort").value == localStorage.getItem("localPasswort")){
+                $('#label').html("<p>Die Einlog-Daten sind korrekt</p>");
+                //open(main.html);
+                main.loggedIn();
+            }
+            else if((document.getElementById("regNamensfeld")).value == "" && (document.getElementById("regPasswort").value == "")){
+                $('#label').html("<p>Geben Sie bitte Ihren Usernamen und Passwort ein!</p>");
+            }
+            else if((document.getElementById("regNamensfeld")).value == ""){
+                $('#label').html("<p>Geben Sie bitte Ihren Usernamen ein!</p>");
+            }
+            else if((document.getElementById("regPasswort")).value == ""){
+                $('#label').html("<p>Geben Sie bitte Ihr Passwort ein!</p>");
+            }
+            else{
+                $('#label').html("<p>Die Einlog-Daten sind falsch!</p>");
+            }
+        }
+    </script>
+
+   <hr/>
+
+
+</template>

@@ -5,6 +5,10 @@ html, body, div {
     font-family: sans-serif;
 }
 
+sascha10k-content-router.dynContent div.sascha10k-content-router {
+    padding: 20px;
+}
+
 #top-menu {
     background-color: #3c3c3c;
     align-content: flex-start;

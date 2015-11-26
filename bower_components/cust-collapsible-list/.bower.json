@@ -1,0 +1,36 @@
+{
+  "name": "cust-collapsible-list",
+  "homepage": "https://github.com/JessiceBL/cust-collapsible-list.git",
+  "authors": [
+    "Jessica Bleile"
+  ],
+  "description": "ELement for creating collapsible list content",
+  "main": "",
+  "keywords": [
+    "Polymer",
+    "Webcomponents",
+    "Collapse"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iron-icons": "polymerelements/iron-icons#^1.0.0"
+  },
+  "_release": "47a7109a23",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "47a7109a23e38dd7286c875555f6d95cd7bf63c2"
+  },
+  "_source": "git://github.com/JessicaBL/cust-collapsible-list.git",
+  "_target": "*",
+  "_originalSource": "JessicaBL/cust-collapsible-list",
+  "_direct": true
+}

@@ -1,5 +1,6 @@
 // manages and represents a single Event
-function PEvent(title, description, city, date, createdBy, private, createdAt, maxUser){
+function PEvent(id, title, description, city, date, createdBy, private, createdAt, maxUser, tags){
+    this.id = id;
     this.title = title;
     this.description = description;
     this.city = city;
@@ -11,6 +12,7 @@ function PEvent(title, description, city, date, createdBy, private, createdAt, m
     this.maxUser = maxUser;
     this.waitingList = []; // list of registered but not attending users
     this.participantList = []; // if the event is private the allowed users will be provided here
+    this.tags = [];
     
     // checks if user can/may attend or not
     this.attend = function(user){

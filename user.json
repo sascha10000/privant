@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "username": "user1",
+      "passwort": "pa$$w0rd",
+      "email": "Email@yahoo.de",
+      "ueber_mich": "Text",
+      "profilbild": "AntCircle.jpg",
+      "rolle": "Benutzer"
+    },
+    {
+      "username": "user2",
+      "passwort": "1234",
+      "email": "bla@gmx.de",
+      "ueber_mich": "grwsdyg",
+      "profilbild": "AntColor7.jpg",
+      "rolle": "Admin"
+    }
+  ]
+}

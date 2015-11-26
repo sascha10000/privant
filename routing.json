@@ -1,4 +1,4 @@
-var routing_main = [{
+    var routing_main = [{
                         nameid: "loggedIn",
                         file: "main.loggedin.html"
                     },
@@ -11,16 +11,36 @@ var routing_loggedOut = [{
                         nameid: "landing",
                         file: "landing.html"
                     },
-
-                    {
-                        nameid: "recommendations",
-                        file: "recommendations.html"
-                    },
                      {
                         nameid: "about",
                         file: "about.html"
                      },
-			{
+                     {
+                        nameid: "login",
+                        file: "login3.html"
+                     },
+                     {
+                        nameid: "register",
+                        file: "register2.html"
+                     }];
+
+var routing_loggedIn = [{
+                        nameid: "about",
+                        file: "about.html"
+                     },
+                        {
+                            nameid: "notifications",
+                            file: "notifications.html"
+                        },
+                    {
+                        nameid: "recommendations",
+                        file: "recommendations.html"
+                    },
+                    {
+                        nameid: "changeProfile",
+                        file: "userchange.html"
+                    },
+                    {
                         nameid: "statistics",
                         file: "statistics.html"
-                     }];
+                    }];

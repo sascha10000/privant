@@ -17,41 +17,57 @@ Polymer({
     properties: {
         srcfile: String,
         targetid: {
-            type:String,
+            type: String,
             value: ''
         },
-        append: String
+        appendtoparent: {
+            type: String,
+            value: 'false'
+        },
+        append: {
+            type: String,
+            value: 'true'
+        }
     },
     attached: function(){
-        // adds the import for the given source file
-        var link = document.createElement('link');
-        var targetid = this.targetid;
-        var append = this.append;
-        var that = this;
-        
-        
-        link.rel = 'import';
-        link.href = this.srcfile;
-        link.onload = function(e) {
-            // clones the templates content into the given target element
-            var tmpl = e.path[0].import.querySelector('template');
-            var clone = document.importNode(tmpl.content, true);
-            var target = {}
+        if(this.wasAttached == undefined){
+            // adds the import for the given source file
+            var link = document.createElement('link');
+            var targetid = this.targetid;
+            var append = this.append;
+            var that = this;
 
-            if(targetid === '')
-                target = Polymer.dom(that.root);
-            else
-                target = document.querySelector('#'+targetid);
-            
-            if(append == "false"){
-                while(target.firstChild){
-                    target.removeChild(target.firstChild);
+            link.rel = 'import';
+            link.href = this.srcfile;
+            link.onload = function(e) {
+                // clones the templates content into the given target element
+                var tmpl = e.path[0].import.querySelector('template');
+                var clone = document.importNode(tmpl.content, true);
+                var target = {}
+
+                if(targetid === '')
+                    target = Polymer.dom(that.root);
+                else
+                    target = document.querySelector('#'+targetid);
+
+                if(targetid === '' && that.appendtoparent === 'true'){
+                    var target = Polymer.dom(that).parentNode;
                 }
-            }
-            target.appendChild(clone);
-        };
-        link.onerror = function(e) {};
-        document.head.appendChild(link);
+                else if(targetid !== '' && that.appendtoparent === 'true'){
+                    var target = Polymer.dom(that).parentNode.querySelector('#'+targetid);
+                }
+
+                if(append == "false"){
+                    while(target.firstChild){
+                        target.removeChild(target.firstChild);
+                    }
+                }
+                target.appendChild(clone);
+            };
+            link.onerror = function(e) {};
+            this.wasAttached = true;
+            document.head.appendChild(link);
+        }
     }
 });
 </script>

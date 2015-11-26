@@ -1,8 +1,9 @@
 <template id="app" is="auto-binding">
-    <paper-header-panel flex>
+    <paper-header-panel style="overflow-y: auto;" flex>
         <paper-toolbar class="medium" id="top-menu">
-            <sascha10k-include srcFile="menu.html" targetId="topBar" append="true"></sascha10k-include>
+            <sascha10k-include srcFile="menu.loggedout.html" appendToParent="true" targetid="topBar"></sascha10k-include>
         </paper-toolbar>
+        
         <sascha10k-content-router routervar="routing_loggedOut" selected="landing"></sascha10k-content-router>
         
         <div id="footer">

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="css/style.css" />
+<link rel="shortcut icon" type="image/x-icon" href="AntCircle.png" />
+<link rel="import" href="bower_components/gold-email-input/gold-email-input.html" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="mailcheck.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PrivAnt</title>
+</head>
+<body>
+        <h3>Registrierung</h3>
+    <form name="registrierungsFormular" id="registrierungsFormular" onsubmit="daten_speichern(); daten_ausgeben(); return false;" action="user.json">
+        Name:*                   <input name="Namensfeld" id="regNamensfeld" type="text"><br/><br/>
+        Passwort:*               <input name="Passwortfeld" id="regPasswort" type="password"><br/><br/>
+        E-Mail:*                 <input name="EMailFeld" id="regEmail" type="email"><br/><br/>
+
+        <gold-email-input auto-validate="true" label="E-Mail-Adresse"></gold-email-input>
+
+        Kurzbeschreibung:       <textarea name="Beschreibung" id="regBeschreibung" cols=30" rows="4"></textarea><br/>
+        <p id="regHinweisPflichtfeld">* Pflichtfelder</p><br/>
+        <h5 id="labelBild">Profilbild hochladen</h5>
+        <input type="file" id="dateiHochladen" name="files[]" onchange="hinzufuegen(document.images[0].src=this.value)"/><br/>
+        <img id="uploadbild" src="" /> <br/>
+        <input type="submit" id="regButton" value="Registrieren">
+        <!-- Button zum Zurücksetzen der eingegeben Daten<input type="reset">-->
+    </form>
+
+</body>
+    <script>
+/**
+        Mailcheck.run({
+            regmail: yourTextInput.value,
+            domains: domains,                       // optional
+            topLevelDomains: topLevelDomains,       // optional
+            secondLevelDomains: secondLevelDomains, // optional
+            distanceFunction: superStringDistance,  // optional
+            suggested: function(suggestion) {
+                // callback code
+            },
+            empty: function() {
+                // callback code
+            }
+        });
+
+        var domains = ['gmail.com', 'aol.com'];
+        var secondLevelDomains = ['hotmail']
+        var topLevelDomains = ["com", "net", "org"];
+
+        var superStringDistance = function(string1, string2) {
+            // a string distance algorithm of your choosing
+        }
+
+        $('#regEmail').on('blur', function() {
+            $(this).mailcheck({
+                domains: domains,                       // optional
+                secondLevelDomains: secondLevelDomains, // optional
+                topLevelDomains: topLevelDomains,       // optional
+                distanceFunction: superStringDistance,  // optional
+                suggested: function(element, suggestion) {
+                    // callback code
+                },
+                empty: function(element) {
+                    // callback code
+                }
+            });
+        });**/
+
+        function hinzufuegen(zwerg){
+            document.getElementById("uploadbild").src = zwerg;
+        }
+
+        function daten_speichern(){
+            localStorage.setItem("localName", document.getElementById("regNamensfeld").value);
+            localStorage.setItem("localPasswort", document.getElementById("regPasswort").value);
+            localStorage.setItem("localEmail", document.getElementById("regEmail").value);
+            localStorage.setItem("localBeschreibung", document.getElementById("regBeschreibung").value);
+        }
+        function daten_ausgeben() {
+            console.log("Name: " + localStorage.getItem("localName"));
+            console.log("Passwort: " + localStorage.getItem("localPasswort"));
+            console.log("Email: " + localStorage.getItem("localEmail"));
+            console.log("Beschreibung: " + localStorage.getItem("localBeschreibung"));
+        }
+
+
+</script>
+
+
+
+
+</html>
+
